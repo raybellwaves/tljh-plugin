@@ -20,5 +20,4 @@ def tljh_config_post_install(config):
         "cull": {
             "enabled": False,
         },
-        "configurator": {"enabled": False},
     }
