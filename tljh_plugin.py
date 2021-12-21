@@ -13,8 +13,15 @@ def tljh_extra_user_conda_packages():
 
 @hookimpl
 def tljh_config_post_install(config):
-    """Overide values in https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/configurer.py"""
+    """Overide config"""
     # Set jupyter lab to be default
-    config['user_environment']['default_app'] = 'jupyterlab'
+    user_environment = {'default_app': 'jupyterlab'}
+    config['user_environment'] = user_environment
     # Disable culling idle servers
-    config['services']['cull']['enabled'] = False
+    services = {
+        "cull": {
+            "enabled": False,
+        },
+        "configurator": {"enabled": False},
+    }
+    config['services'] = services
