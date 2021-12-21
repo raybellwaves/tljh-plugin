@@ -13,6 +13,7 @@ def tljh_extra_user_conda_packages():
 
 @hookimpl
 def tljh_config_post_install(config):
+    # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/configurer.py
     # Set jupyter lab to be default
     config["user_environment"] = {"default_app": "jupyterlab"}
     # Disable culling idle servers
