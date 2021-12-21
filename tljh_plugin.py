@@ -18,6 +18,7 @@ def tljh_config_post_install(config):
     user_environment['default_app'] = user_environment.get('default_app', 'jupyterlab')
     config['user_environment'] = user_environment
     # Disable culling idle servers
-    services_cull = config.get('services.cull', {})
-    services_cull['enabled'] = user_environment.get('enabled', 'False')
-    config['services.cull'] = services_cull
+    services = config.get('services', {})
+    services_cull = services.get('cull', {})
+    services_cull['enabled'] = services_cull.get('enabled', 'False')
+    config['services']['cull'] = services_cull
