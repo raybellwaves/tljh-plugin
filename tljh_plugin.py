@@ -13,7 +13,6 @@ def tljh_extra_user_conda_packages():
 
 @hookimpl
 def tljh_config_post_install(config):
-    """Overide config"""
     # Set jupyter lab to be default
     user_environment = {'default_app': 'jupyterlab'}
     config['user_environment'] = user_environment
