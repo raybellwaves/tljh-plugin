@@ -6,8 +6,10 @@ def tljh_extra_user_conda_packages():
     """Install jupyter lab extensions"""
     return [
         "black",
+        "dask-labextension",
         "isort",
         "jupyterlab_code_formatter",
+        "jupyterlab_execute_time",
     ]
 
 
