@@ -7,19 +7,8 @@ def tljh_extra_apt_packages():
     return ["nano"]
 
 
-def tljh_extra_hub_pip_packages():
-    """Install jupyter lab extensions"""
-    return [
-        "black",
-        "dask-labextension",
-        "isort",
-        "jupyterlab_code_formatter",
-        "jupyterlab_execute_time",
-    ]
-
-
-# @hookimpl
-# def tljh_extra_user_conda_packages():
+# Doesn't work for unknown reasons
+# def tljh_extra_hub_pip_packages():
 #     """Install jupyter lab extensions"""
 #     return [
 #         "black",
@@ -28,6 +17,18 @@ def tljh_extra_hub_pip_packages():
 #         "jupyterlab_code_formatter",
 #         "jupyterlab_execute_time",
 #     ]
+
+
+@hookimpl
+def tljh_extra_user_conda_packages():
+    """Install jupyter lab extensions"""
+    return [
+        "black",
+        "dask-labextension",
+        "isort",
+        "jupyterlab_code_formatter",
+        "jupyterlab_execute_time",
+    ]
 
 
 @hookimpl
