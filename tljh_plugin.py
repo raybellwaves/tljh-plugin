@@ -8,15 +8,9 @@ def tljh_extra_apt_packages():
 
 
 # Doesn't work for unknown reasons
+# Use tljh_extra_user_conda_packages instead
 # def tljh_extra_hub_pip_packages():
 #     """Install jupyter lab extensions"""
-#     return [
-#         "black",
-#         "dask-labextension",
-#         "isort",
-#         "jupyterlab_code_formatter",
-#         "jupyterlab_execute_time",
-#     ]
 
 
 @hookimpl
