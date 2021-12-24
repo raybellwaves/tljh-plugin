@@ -2,6 +2,12 @@ from tljh.hooks import hookimpl
 
 
 @hookimpl
+def tljh_extra_apt_packages():
+    """Install linux applications"""
+    return ["nano"]
+
+
+@hookimpl
 def tljh_extra_user_conda_packages():
     """Install jupyter lab extensions"""
     return [
