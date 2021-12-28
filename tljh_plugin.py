@@ -20,21 +20,21 @@ def tljh_extra_user_conda_packages():
 #     # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
 
 #     # Jupyter lab extensions
-#     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
-# #     lab = [
-# #         "black",
-# #         "dask-labextension",
-# #         "isort",
-# #         #"jupyterhub-traefik-proxy",
-# #         "jupyterlab_code_formatter",
-# #         "jupyterlab_execute_time",
-# #         "jupyter_bokeh",
-# #         "jupyter-dash",
-# #         "jupyterlab-git",
-# #         "jupyterlab-link-share",
-# #         "jupyter-videochat",
-# #     ]
-# #     return lab
+    # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
+    lab = [
+        "black",
+        "dask-labextension",
+        "isort",
+        #"jupyterhub-traefik-proxy",
+        "jupyterlab_code_formatter",
+        "jupyterlab_execute_time",
+        "jupyter_bokeh",
+        "jupyter-dash",
+        "jupyterlab-git",
+        "jupyterlab-link-share",
+        "jupyter-videochat",
+    ]
+    # return lab
 
 # #     # Other packages required on root
     kernel = [
