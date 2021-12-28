@@ -28,7 +28,7 @@ def tljh_extra_user_conda_packages():
         "jupyterlab-git",
         "jupyterlab-link-share",
         "jupyter-videochat",
-        
+        "panel",
     ]
     
     # Other packages required on root
@@ -43,11 +43,10 @@ def tljh_extra_user_conda_packages():
         #"jhsingle-native-proxy",
         #"jupyterhub-traefik-proxy",
         "jupytext",
-        #"streamlit",
     ]
     
     # Data science
-    ds = ["xarray"]
+    ds = ["streamlit", "xarray"]
     
     return lab_extensions + other + ds
 
