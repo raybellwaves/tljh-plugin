@@ -52,7 +52,7 @@ def tljh_extra_user_conda_packages():
     core = ["jupytext", "netCDF4", "xarray"]
     
 #     # Data science interactive viz
-    viz = ["hvplot"]
+    viz = ["hvplot", "ipyleaflet"]
     
 #     # Data science apps
     app = ["cdsdashboards", "panel", "streamlit", "voila"]
