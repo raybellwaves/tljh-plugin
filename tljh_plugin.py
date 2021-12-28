@@ -4,7 +4,7 @@ from tljh.hooks import hookimpl
 @hookimpl
 def tljh_extra_apt_packages():
     """Install linux applications"""
-    return ["nano"]
+    return ["nano", "vim"]
 
 
 # Doesn't work for unknown reasons
@@ -15,14 +15,35 @@ def tljh_extra_apt_packages():
 
 @hookimpl
 def tljh_extra_user_conda_packages():
-    """Install jupyter lab extensions"""
-    return [
+    # Lab extensions
+    lab_extensions = [
         "black",
         "dask-labextension",
         "isort",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
+        "jupyter_bokeh",
+        "jupyter-dash",
+        "jupyterlab-git",
+        "jupyterlab-link-share",
+        "jupyter-videochat",
+        
     ]
+    # Other packages required on root
+    user_env = [
+        #"cdsdashboards",        
+        "nb_conda_kernels",
+        "ipykernel",
+        "ipympl",
+        "ipyleaflet",
+        "ipytree",
+        "ipywidgets",
+        #"jhsingle-native-proxy",
+        #"jupyterhub-traefik-proxy",
+        "jupytext",
+        #"streamlit",
+    ]
+    return lab_extensions + user_env
 
 
 @hookimpl
