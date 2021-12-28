@@ -33,7 +33,6 @@ def tljh_extra_user_conda_packages():
 #         "jupyter-videochat",
 #     ]
 #     return lab
-    
 #     # Other packages required on root
     kernel = [
         "nb_conda_kernels",
@@ -45,17 +44,14 @@ def tljh_extra_user_conda_packages():
         "ipyvolume",
     ]
 #    return kernel
-    
-#     # Data science core
-     core = ["jupytext", "netCDF4", "xarray"]
-    
+#   # Data science core
+    core = ["jupytext", "netCDF4", "xarray"]
 #     # Data science interactive viz
-     viz = ["hvplot"]
-    
+    viz = ["hvplot"]
 #     # Data science apps
-     app = ["cdsdashboards", "panel", "streamlit", "voila"]
+    app = ["cdsdashboards", "panel", "streamlit", "voila"]
     
-     return kernel + core + viz + app
+    return kernel + core + viz + app
 
 
 @hookimpl
