@@ -1,5 +1,6 @@
+import subprocess
 from tljh.hooks import hookimpl
-from tljh import utils
+
 
 @hookimpl
 def tljh_extra_apt_packages():
@@ -52,7 +53,7 @@ def tljh_extra_user_conda_packages():
 
 
 @hookimpl
-def tljh_config_post_install(config):
+def tljh_config_post_install(config, prefix):
     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/configurer.py
     # Set jupyter lab to be default
     config["user_environment"] = {"default_app": "jupyterlab"}
@@ -64,4 +65,4 @@ def tljh_config_post_install(config):
     }
     
     # init conda
-    utils.run_subprocess(["conda", "init", "bash"])
+    subprocess.call("conda init bash", shell=True)
