@@ -44,18 +44,18 @@ def tljh_extra_user_conda_packages():
         "ipywidgets",
         "ipyvolume",
     ]
-    return kernel
+#    return kernel
     
 #     # Data science core
-#     core = ["jupytext", "netCDF4", "xarray"]
+     core = ["jupytext", "netCDF4", "xarray"]
     
 #     # Data science interactive viz
-#     viz = ["hvplot"]
+     viz = ["hvplot"]
     
 #     # Data science apps
-#     app = ["cdsdashboards", "streamlit", "voila"]
+     app = ["cdsdashboards", "panel", "streamlit", "voila"]
     
-#     return lab + kernel + core + viz + app
+     return kernel + core + viz + app
 
 
 @hookimpl
