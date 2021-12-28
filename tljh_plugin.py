@@ -50,7 +50,7 @@ def tljh_extra_user_conda_packages():
     viz = ["hvplot"]
     
     # Data science apps
-    app = ["cdsdashboards", "hvplot", "streamlit", "voila"]
+    app = ["cdsdashboards", "streamlit", "voila"]
     
     return lab + kernel + core + viz + app
 
