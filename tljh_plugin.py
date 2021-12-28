@@ -57,7 +57,7 @@ def tljh_extra_user_conda_packages():
 #     # Data science apps
     app = ["cdsdashboards", "panel", "streamlit", "voila"]
 
-    return kernel + core + viz + app
+    return lab + kernel + core + viz + app
 
 
 @hookimpl
