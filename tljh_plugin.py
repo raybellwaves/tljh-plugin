@@ -15,43 +15,45 @@ def tljh_extra_apt_packages():
 #     """Install jupyter lab extensions"""
 
 
-@hookimpl
-def tljh_extra_user_conda_packages():
-    # Jupyter lab extensions
-    # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
-#     lab = [
-#         "black",
-#         "dask-labextension",
-#         "isort",
-#         #"jupyterhub-traefik-proxy",
-#         "jupyterlab_code_formatter",
-#         "jupyterlab_execute_time",
-#         "jupyter_bokeh",
-#         "jupyter-dash",
-#         "jupyterlab-git",
-#         "jupyterlab-link-share",
-#         "jupyter-videochat",
+# @hookimpl
+# def tljh_extra_user_conda_packages():
+#     # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
+
+#     # Jupyter lab extensions
+#     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
+# #     lab = [
+# #         "black",
+# #         "dask-labextension",
+# #         "isort",
+# #         #"jupyterhub-traefik-proxy",
+# #         "jupyterlab_code_formatter",
+# #         "jupyterlab_execute_time",
+# #         "jupyter_bokeh",
+# #         "jupyter-dash",
+# #         "jupyterlab-git",
+# #         "jupyterlab-link-share",
+# #         "jupyter-videochat",
+# #     ]
+# #     return lab
+# #     # Other packages required on root
+#     kernel = [
+#         "nb_conda_kernels",
+#         "ipykernel",
+#         "ipympl",
+#         "ipyleaflet",
+#         "ipytree",
+#         "ipywidgets",
+#         "ipyvolume",
 #     ]
-#     return lab
-#     # Other packages required on root
-    kernel = [
-        "nb_conda_kernels",
-        "ipykernel",
-        "ipympl",
-        "ipyleaflet",
-        "ipytree",
-        "ipywidgets",
-        "ipyvolume",
-    ]
-#    return kernel
-#   # Data science core
-    core = ["jupytext", "netCDF4", "xarray"]
-#     # Data science interactive viz
-    viz = ["hvplot"]
-#     # Data science apps
-    app = ["cdsdashboards", "panel", "streamlit", "voila"]
+# #    return kernel
+# #   # Data science core
+#     core = ["jupytext", "netCDF4", "xarray"]
+# #     # Data science interactive viz
+#     viz = ["hvplot"]
+# #     # Data science apps
+#     app = ["cdsdashboards", "panel", "streamlit", "voila"]
     
-    return kernel + core + viz + app
+#     return kernel + core + viz + app
 
 
 @hookimpl
