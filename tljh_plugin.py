@@ -18,10 +18,11 @@ def tljh_extra_apt_packages():
 @hookimpl
 def tljh_extra_user_conda_packages():
     # Jupyter bab extensions
-    lab_extensions = [
+    lab = [
         "black",
         "dask-labextension",
         "isort",
+        #"jupyterhub-traefik-proxy",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
         "jupyter_bokeh",
@@ -29,12 +30,10 @@ def tljh_extra_user_conda_packages():
         "jupyterlab-git",
         "jupyterlab-link-share",
         "jupyter-videochat",
-        "panel",
     ]
     
     # Other packages required on root
-    other = [
-        "cdsdashboards",        
+    kernel = [
         "nb_conda_kernels",
         "ipykernel",
         "ipympl",
@@ -42,14 +41,18 @@ def tljh_extra_user_conda_packages():
         "ipytree",
         "ipywidgets",
         "ipyvolume",
-        #"jupyterhub-traefik-proxy",
-        "jupytext",
     ]
     
-    # Data science
-    ds = ["hvplot", "netCDF4", "streamlit", "voila", "xarray"]
+    # Data science core
+    core = ["jupytext", "netCDF4", "xarray"]
     
-    return lab_extensions + other + ds
+    # Data science interactive viz
+    viz = ["hvplot"]
+    
+    # Data science apps
+    app = ["cdsdashboards", "hvplot", "streamlit", "voila"]
+    
+    return lab + kernel + core + viz + app
 
 
 @hookimpl
