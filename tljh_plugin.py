@@ -65,4 +65,5 @@ def tljh_config_post_install(config):
     }
     
     # init conda
-    subprocess.call("conda init bash", shell=True)
+    # doesn't work
+    # subprocess.call("conda init bash", shell=True)
