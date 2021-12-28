@@ -1,5 +1,5 @@
 from tljh.hooks import hookimpl
-
+from tljh import utils
 
 @hookimpl
 def tljh_extra_apt_packages():
@@ -59,3 +59,6 @@ def tljh_config_post_install(config):
             "enabled": False,
         },
     }
+    
+    # init conda
+    utils.run_subprocess(["conda", "init", "bash"])
