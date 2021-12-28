@@ -48,7 +48,7 @@ def tljh_extra_user_conda_packages():
     ]
     
     # Data science
-    ds = ["streamlit", "voila", "xarray"]
+    ds = ["netCDF4", "streamlit", "voila", "xarray"]
     
     return lab_extensions + other + ds
 
