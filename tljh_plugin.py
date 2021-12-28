@@ -30,7 +30,7 @@ def tljh_extra_user_conda_packages():
         
     ]
     # Other packages required on root
-    user_env = [
+    other = [
         #"cdsdashboards",        
         "nb_conda_kernels",
         "ipykernel",
@@ -43,7 +43,9 @@ def tljh_extra_user_conda_packages():
         "jupytext",
         #"streamlit",
     ]
-    return lab_extensions + user_env
+    # Data science
+    ds = ["xarray"]
+    return lab_extensions + other + ds
 
 
 @hookimpl
