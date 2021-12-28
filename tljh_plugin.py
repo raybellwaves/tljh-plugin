@@ -29,6 +29,7 @@ def tljh_extra_user_conda_packages():
         "jupyter-videochat",
         
     ]
+    
     # Other packages required on root
     other = [
         #"cdsdashboards",        
@@ -43,8 +44,10 @@ def tljh_extra_user_conda_packages():
         "jupytext",
         #"streamlit",
     ]
+    
     # Data science
     ds = ["xarray"]
+    
     return lab_extensions + other + ds
 
 
