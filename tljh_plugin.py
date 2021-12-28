@@ -1,4 +1,6 @@
+import sh
 from tljh.hooks import hookimpl
+from tljh.user import ensure_group
 
 
 @hookimpl
@@ -62,6 +64,16 @@ def tljh_config_post_install(config):
             "enabled": False,
         },
     }
+    
+    # See https://github.com/kafonek/tljh-shared-directory/blob/master/tljh_shared_directory.py   
+    # Create a shared directory
+    sh.mkdir('/srv/scratch', '-p') # mkdir -p /srv/scratch
+    ensure_group('jupyterhub-users') # make sure user is created before changing permissions
+    sh.chown('root:jupyterhub-users', '/srv/scratch') # sudo chown root:jupyterhub-users /srv/scratch
+    sh.chmod('777', '/srv/scratch') # sudo chmod 777 /srv/scratch
+    sh.chmod('g+s', '/srv/scratch') # sudo chmod g+s /srv/scratch
+    # Link skeleton directory (directory copied to a newusers home on log in)
+    sh.ln('-s', '/srv/scratch', '/etc/skel/scratch')
     
     # init conda
     # doesn't work
