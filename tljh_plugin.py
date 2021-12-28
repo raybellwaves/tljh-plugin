@@ -39,13 +39,14 @@ def tljh_extra_user_conda_packages():
         "ipyleaflet",
         "ipytree",
         "ipywidgets",
+        "ipyvolume",
         #"jhsingle-native-proxy",
         #"jupyterhub-traefik-proxy",
         "jupytext",
     ]
     
     # Data science
-    ds = ["streamlit", "xarray"]
+    ds = ["streamlit", "voila", "xarray"]
     
     return lab_extensions + other + ds
 
