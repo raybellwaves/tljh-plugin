@@ -15,8 +15,8 @@ def tljh_extra_apt_packages():
 #     """Install jupyter lab extensions"""
 
 
-# @hookimpl
-# def tljh_extra_user_conda_packages():
+@hookimpl
+def tljh_extra_user_conda_packages():
 #     # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
 
 #     # Jupyter lab extensions
@@ -54,6 +54,8 @@ def tljh_extra_apt_packages():
 #     app = ["cdsdashboards", "panel", "streamlit", "voila"]
     
 #     return kernel + core + viz + app
+# Not on pip
+return ["nb_conda_kernels"]
 
 
 @hookimpl
