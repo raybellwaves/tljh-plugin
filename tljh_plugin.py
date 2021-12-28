@@ -17,7 +17,8 @@ def tljh_extra_apt_packages():
 
 @hookimpl
 def tljh_extra_user_conda_packages():
-    # Jupyter bab extensions
+    # Jupyter lab extensions
+    # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
 #     lab = [
 #         "black",
 #         "dask-labextension",
