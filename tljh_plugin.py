@@ -86,7 +86,7 @@ def tljh_extra_user_conda_packages():
         "lux-widget",
         "pandas-profiling",
         "python-graphviz",
-        "seaborne",
+        "seaborn",
         "sweetviz",
         "vega",
     ]
