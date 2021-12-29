@@ -23,8 +23,6 @@ def tljh_extra_user_conda_packages():
     # Jupyter lab extensions
     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
     
-    hub = ["jupyterhub-traefik-proxy"]
-    
     lab = [
         "black",
         "dask-labextension", # installs dask
