@@ -17,13 +17,13 @@ def tljh_extra_apt_packages():
 
 @hookimpl
 def tljh_extra_user_conda_packages():
-#     # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
+    # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
 
-#     # Jupyter lab extensions
+    # Jupyter lab extensions
     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
     lab = [
         "black",
-        "dask-labextension",
+        "dask-labextension", # installs dask
         "isort",
         #"jupyterhub-traefik-proxy",
         "jupyterlab_code_formatter",
@@ -36,7 +36,7 @@ def tljh_extra_user_conda_packages():
     ]
     # return lab
 
-# #     # Other packages required on root
+    # Python kernel extensions
     kernel = [
         "nb_conda_kernels", # not on pip
         "ipykernel",
@@ -46,16 +46,44 @@ def tljh_extra_user_conda_packages():
         "ipywidgets",
         "ipyvolume",
     ]
-#    return kernel
 
-#   # Data science core
-    core = ["jupytext", "netCDF4", "xarray"]
+    # Data science core
+    core = [
+        "geopandas", # installs folium
+        "fastparquet",
+        "featuretools",
+        "joblib",
+        "jupytext",
+        "lightgbm",
+        "movingpandas",
+        "mlflow",
+        "rubicon-ml",
+        "netCDF4",
+        "optuna",
+        "pooch",
+        "py-xgboost",
+        "pyarrow",
+        "python-snappy",
+        "rioxarray",
+        "scikit-learn",
+        "shap",
+        "tpot",
+        "tqdm",
+        "tsfresh",
+        "xarray",
+    ]
     
-#     # Data science interactive viz
-    viz = ["hvplot", "ipyleaflet"]
+    # Data science viz
+    viz = [
+        "contextily",
+        "graphviz",
+        "hvplot", # installs holoviews and panel
+        "ipyleaflet",
+        "python-graphviz",
+    ]
     
-#     # Data science apps
-    app = ["cdsdashboards", "panel", "streamlit", "voila"]
+    # Data science apps
+    app = ["cdsdashboards", "streamlit", "voila"]
 
     return lab + kernel + core + viz + app
 
@@ -79,7 +107,7 @@ def tljh_config_post_install(config):
     sh.chown('root:jupyterhub-users', '/srv/scratch') # sudo chown root:jupyterhub-users /srv/scratch
     sh.chmod('777', '/srv/scratch') # sudo chmod 777 /srv/scratch
     sh.chmod('g+s', '/srv/scratch') # sudo chmod g+s /srv/scratch
-    # Link skeleton directory (directory copied to a newusers home on log in)
+    # Link skeleton directory (directory copied to a new user's home on log in)
     sh.ln('-s', '/srv/scratch', '/etc/skel/scratch')
     
     # init conda
