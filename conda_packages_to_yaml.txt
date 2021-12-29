@@ -4,16 +4,14 @@ python
 
 from ruamel.yaml import YAML
 from tljh_plugin import tljh_extra_user_conda_packages
-
 l = tljh_extra_user_conda_packages()
 d = dict(dependencies=l)
-
 yaml = YAML()
 yaml.indent(offset=2)
 with open('env.yaml', 'w') as f:
     yaml.dump(d, f)
     
-# Open in editor and add at top
+# vi env.yaml and add at top
 name: test_env
 channels:
   - conda-forge
