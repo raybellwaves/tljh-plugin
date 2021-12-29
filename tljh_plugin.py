@@ -31,6 +31,7 @@ def tljh_extra_user_conda_packages():
         "jupyterlab_execute_time",
         "jupyter_bokeh",
         "jupyter-dash",
+        "jupyter-containds",
         "jupyterlab-git",
         "jupyterlab-link-share",
         "jupyter-videochat",
