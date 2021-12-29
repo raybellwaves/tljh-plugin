@@ -26,7 +26,6 @@ def tljh_extra_user_conda_packages():
         "black",
         "dask-labextension", # installs dask
         "isort",
-        #"jupyterhub-traefik-proxy",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
         "jupyter_bokeh",
