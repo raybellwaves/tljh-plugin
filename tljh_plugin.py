@@ -1,3 +1,4 @@
+# See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/hooks.py
 import sh
 from tljh.hooks import hookimpl
 from tljh.user import ensure_group
