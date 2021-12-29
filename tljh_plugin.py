@@ -6,7 +6,7 @@ from tljh.user import ensure_group
 
 @hookimpl
 def tljh_extra_apt_packages():
-    """Install linux applications"""
+    # Install linux applications
     return ["nano", "vim"]
 
 
@@ -35,7 +35,6 @@ def tljh_extra_user_conda_packages():
         "jupyterlab-link-share",
         "jupyter-videochat",
     ]
-    # return lab
 
     # Python kernel extensions
     kernel = [
@@ -76,11 +75,20 @@ def tljh_extra_user_conda_packages():
     
     # Data science viz
     viz = [
+        "altair",
         "contextily",
+        "dtale",
+        "geoviews",
         "graphviz",
         "hvplot", # installs holoviews and panel
         "ipyleaflet",
+        "lux-api",
+        "lux-widget",
+        "pandas-profiling",
         "python-graphviz",
+        "seaborne",
+        "sweetviz",
+        "vega",
     ]
     
     # Data science apps
