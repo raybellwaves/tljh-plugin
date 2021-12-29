@@ -66,6 +66,7 @@ def tljh_extra_user_conda_packages():
         "python-snappy",
         "rioxarray",
         "scikit-learn",
+        "s3fs",
         "shap",
         "tpot",
         "tqdm",
