@@ -97,23 +97,23 @@ def tljh_extra_user_conda_packages():
     return lab + kernel + core + viz + app
 
 
-@hookimpl
-def tljh_custom_jupyterhub_config(c):
-    # Setup cdsdashboards
-    # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
-    c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
+# @hookimpl
+# def tljh_custom_jupyterhub_config(c):
+#     # Setup cdsdashboards
+#     # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
+#     c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
 
-    c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
+#     c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
 
-    c.JupyterHub.allow_named_servers = True
+#     c.JupyterHub.allow_named_servers = True
 
-    c.CDSDashboardsConfig.builder_class = 'cdsdashboards.builder.processbuilder.ProcessBuilder'
+#     c.CDSDashboardsConfig.builder_class = 'cdsdashboards.builder.processbuilder.ProcessBuilder'
 
-    from cdsdashboards.app import CDS_TEMPLATE_PATHS
-    from cdsdashboards.hubextension import cds_extra_handlers
+#     from cdsdashboards.app import CDS_TEMPLATE_PATHS
+#     from cdsdashboards.hubextension import cds_extra_handlers
 
-    c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
-    c.JupyterHub.extra_handlers = cds_extra_handlers    
+#     c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
+#     c.JupyterHub.extra_handlers = cds_extra_handlers    
 
     
 @hookimpl
