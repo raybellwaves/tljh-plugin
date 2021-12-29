@@ -102,18 +102,18 @@ def tljh_custom_jupyterhub_config(c):
     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/jupyterhub_config.py
     # Setup cdsdashboards
     # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
-    c.JupyterHub.allow_named_servers = True
-    c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
+#     c.JupyterHub.allow_named_servers = True
+#     c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
 
-    c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
+#     c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
 
-    c.CDSDashboardsConfig.builder_class = 'cdsdashboards.builder.processbuilder.ProcessBuilder'
+#     c.CDSDashboardsConfig.builder_class = 'cdsdashboards.builder.processbuilder.ProcessBuilder'
 
-    from cdsdashboards.app import CDS_TEMPLATE_PATHS
-    c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
+#     from cdsdashboards.app import CDS_TEMPLATE_PATHS
+#     c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
 
-    from cdsdashboards.hubextension import cds_extra_handlers
-    c.JupyterHub.extra_handlers = cds_extra_handlers    
+#     from cdsdashboards.hubextension import cds_extra_handlers
+#     c.JupyterHub.extra_handlers = cds_extra_handlers    
 
     
 @hookimpl
