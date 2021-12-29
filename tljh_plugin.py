@@ -97,10 +97,11 @@ def tljh_extra_user_conda_packages():
     return lab + kernel + core + viz + app
 
 
-# @hookimpl
-# def tljh_custom_jupyterhub_config(c):
-#     # Setup cdsdashboards
-#     # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
+@hookimpl
+def tljh_custom_jupyterhub_config(c):
+    # Setup cdsdashboards
+    # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
+    c.JupyterHub.allow_named_servers = True
 #     c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
 
 #     c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
