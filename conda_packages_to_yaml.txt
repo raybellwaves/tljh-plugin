@@ -12,12 +12,14 @@ with open('env.yaml', 'w') as f:
     yaml.dump(d, f)
     
 # vi env.yaml and add at top
+# 12/29/21
 name: test_env
 channels:
   - conda-forge
   - nodefaults
 # dependencies:
   - python=3.9
+  - jupyterhub=1.5.0
 
 conda remove --name test_env --all --y
 mamba env create -f env.yaml
