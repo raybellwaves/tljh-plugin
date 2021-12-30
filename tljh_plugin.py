@@ -1,4 +1,5 @@
 # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/hooks.py
+from pathlib import Path
 import sh
 from tljh.hooks import hookimpl
 from tljh.user import ensure_group
@@ -22,10 +23,10 @@ def tljh_extra_user_conda_packages():
 
     # Jupyter lab extensions
     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
-    
+
     lab = [
         "black",
-        "dask-labextension", # installs dask
+        "dask-labextension",  # installs dask
         "isort",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
@@ -39,7 +40,7 @@ def tljh_extra_user_conda_packages():
 
     # Python kernel extensions
     kernel = [
-        "nb_conda_kernels", # not on pip
+        "nb_conda_kernels",  # not on pip
         "ipykernel",
         "ipympl",
         "ipyleaflet",
@@ -50,7 +51,7 @@ def tljh_extra_user_conda_packages():
 
     # Data science core
     core = [
-        "geopandas", # installs folium
+        "geopandas",  # installs folium
         "fastparquet",
         "featuretools",
         "joblib",
@@ -74,7 +75,7 @@ def tljh_extra_user_conda_packages():
         "tsfresh",
         "xarray",
     ]
-    
+
     # Data science viz
     viz = [
         "altair",
@@ -82,7 +83,7 @@ def tljh_extra_user_conda_packages():
         "dtale",
         "geoviews",
         "graphviz",
-        "hvplot", # installs holoviews and panel
+        "hvplot",  # installs holoviews and panel
         "ipyleaflet",
         "lux-api",
         "lux-widget",
@@ -92,7 +93,7 @@ def tljh_extra_user_conda_packages():
         "sweetviz",
         "vega",
     ]
-    
+
     # Data science apps
     app = ["cdsdashboards-singleuser", "streamlit", "voila"]
 
@@ -115,9 +116,9 @@ def tljh_extra_user_conda_packages():
 #     c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
 
 #     from cdsdashboards.hubextension import cds_extra_handlers
-#     c.JupyterHub.extra_handlers = cds_extra_handlers    
+#     c.JupyterHub.extra_handlers = cds_extra_handlers
 
-    
+
 @hookimpl
 def tljh_config_post_install(config):
     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/configurer.py
@@ -129,17 +130,38 @@ def tljh_config_post_install(config):
             "enabled": False,
         },
     }
-    
-    # See https://github.com/kafonek/tljh-shared-directory/blob/master/tljh_shared_directory.py   
+
+    # See https://github.com/kafonek/tljh-shared-directory/blob/master/tljh_shared_directory.py
     # Create a shared directory
-    sh.mkdir('/srv/scratch', '-p') # mkdir -p /srv/scratch
-    ensure_group('jupyterhub-users') # make sure user is created before changing permissions
-    sh.chown('root:jupyterhub-users', '/srv/scratch') # sudo chown root:jupyterhub-users /srv/scratch
-    sh.chmod('777', '/srv/scratch') # sudo chmod 777 /srv/scratch
-    sh.chmod('g+s', '/srv/scratch') # sudo chmod g+s /srv/scratch
+    sh.mkdir("/srv/scratch", "-p")  # mkdir -p /srv/scratch
+    ensure_group(
+        "jupyterhub-users"
+    )  # make sure user is created before changing permissions
+    sh.chown(
+        "root:jupyterhub-users", "/srv/scratch"
+    )  # sudo chown root:jupyterhub-users /srv/scratch
+    sh.chmod("777", "/srv/scratch")  # sudo chmod 777 /srv/scratch
+    sh.chmod("g+s", "/srv/scratch")  # sudo chmod g+s /srv/scratch
     # Link skeleton directory (directory copied to a new user's home on log in)
-    sh.ln('-s', '/srv/scratch', '/etc/skel/scratch')
-    
+    sh.ln("-s", "/srv/scratch", "/etc/skel/scratch")
+
+
+@hookimpl
+def tljh_post_install():
+    # Configure Jupyter lab extensions
+    overrides_file = "/opt/tljh/user/share/jupyter/lab/settings/overrides.json"
+    overrides_path = Path(overrides_file)
+    overrides_path.parent.mkdir(exist_ok=True)
+    with overrides_path.open("w") as f:
+        print("{", file=f)
+        print('    "@jupyterlab/notebook-extension:tracker": {', file=f)
+        print('        "recordTiming": true', file=f)
+        print("     },", file=f)
+        print('    "@ryantam626/jupyterlab_code_formatter:settings": {', file=f)
+        print('        "formatOnSave": true', file=f)
+        print("     }", file=f)
+        print("}", file=f)
+
     # init conda
     # doesn't work
     # subprocess.call("conda init bash", shell=True)
