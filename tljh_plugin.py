@@ -21,9 +21,8 @@ def tljh_extra_apt_packages():
 def tljh_extra_user_conda_packages():
     # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
 
-    # Jupyter lab extensions
+    # Jupyter (lab) extensions
     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
-
     lab = [
         "black",
         "dask-labextension",  # installs dask
@@ -33,6 +32,7 @@ def tljh_extra_user_conda_packages():
         "jupyter_bokeh",
         "jupyter-dash",
         "jupyter-containds",
+        "jupyter-server-proxy",
         "jupyterlab-git",
         "jupyterlab-link-share",
         "jupyter-videochat",
