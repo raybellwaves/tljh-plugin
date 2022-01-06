@@ -19,6 +19,9 @@ def tljh_extra_apt_packages():
 
 @hookimpl
 def tljh_extra_user_conda_packages():
+    # Default packages are ipykernel, ipython, ipython-genutils, ipywidgets=7.6.5
+    # jupyter-resource-usage=0.6.1, jupyterhub=1.5.0, jupyterlab=3.2.5
+    # jupyterlab-widgets=1.0.2, tqdm=4.62.3
     # See also https://github.com/raybellwaves/tljh-requirements/blob/main/requirements.txt
 
     # Jupyter (lab) extensions
@@ -30,9 +33,9 @@ def tljh_extra_user_conda_packages():
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
         "jupyter_bokeh",
-        # "jupyter-dash", https://github.com/plotly/jupyter-dash/issues/49
+        "jupyter-dash", # https://github.com/plotly/jupyter-dash/issues/49
         "jupyter-containds",
-        # "jupyter-server-proxy",
+        "jupyter-server-proxy",
         "jupyterlab-git",
         "jupyterlab-link-share",
         # "jupyter-videochat", https://github.com/jupyterlab-contrib/jupyter-videochat/issues/52
