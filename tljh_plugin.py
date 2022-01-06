@@ -30,17 +30,17 @@ def tljh_extra_user_conda_packages():
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
         "jupyter_bokeh",
-        "jupyter-dash",
+        # "jupyter-dash", https://github.com/plotly/jupyter-dash/issues/49
         "jupyter-containds",
-        "jupyter-server-proxy",
+        # "jupyter-server-proxy",
         "jupyterlab-git",
         "jupyterlab-link-share",
-        "jupyter-videochat",
+        # "jupyter-videochat", https://github.com/jupyterlab-contrib/jupyter-videochat/issues/52
     ]
 
     # Python kernel extensions
     kernel = [
-        "nb_conda_kernels",  # not on pip
+        # "nb_conda_kernels",  # not on pip
         "ipykernel",
         "ipympl",
         "ipyleaflet",
