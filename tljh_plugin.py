@@ -43,7 +43,7 @@ def tljh_extra_user_conda_packages():
 
     # Python kernel extensions
     kernel = [
-        # "nb_conda_kernels",  # not on pip
+        "nb_conda_kernels",  # not on pip
         "ipykernel",
         "ipympl",
         "ipyleaflet",
