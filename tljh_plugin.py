@@ -29,6 +29,7 @@ def tljh_extra_user_conda_packages():
     lab = [
         "black",
         "dask-labextension",  # installs dask
+        "elyra",
         "isort",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
