@@ -115,12 +115,16 @@ def tljh_custom_jupyterhub_config(c):
 
     c.JupyterHub.allow_named_servers = True    
     
-    c.CDSDashboardsConfig.builder_class = 'cdsdashboards.builder.processbuilder.ProcessBuilder'
+    c.CDSDashboardsConfig.builder_class = (
+        "cdsdashboards.builder.processbuilder.ProcessBuilder"
+    )
 
     from cdsdashboards.app import CDS_TEMPLATE_PATHS
+
     c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
 
     from cdsdashboards.hubextension import cds_extra_handlers
+
     c.JupyterHub.extra_handlers = cds_extra_handlers
 
 
