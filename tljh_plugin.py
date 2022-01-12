@@ -87,7 +87,7 @@ def tljh_extra_user_conda_packages():
         "dtale",
         "geoviews",
         "graphviz",
-        "hvplot", # installs holoviews and panel
+        "hvplot", #1/11/22 installs holoviews and panel. requires `jupyter serverextension enable panel.io.jupyter_server_extension`
         "ipyleaflet",
         "lux-api",
         "lux-widget",
