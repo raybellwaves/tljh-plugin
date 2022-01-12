@@ -135,6 +135,9 @@ def tljh_config_post_install(config):
         },
     }
 
+
+@hookimpl
+def tljh_post_install():
     # See https://github.com/kafonek/tljh-shared-directory/blob/master/tljh_shared_directory.py
     # Create a shared directory
     sh.mkdir("/srv/scratch", "-p")  # mkdir -p /srv/scratch
@@ -148,10 +151,7 @@ def tljh_config_post_install(config):
     sh.chmod("g+s", "/srv/scratch")  # sudo chmod g+s /srv/scratch
     # Link skeleton directory (directory copied to a new user's home on log in)
     sh.ln("-s", "/srv/scratch", "/etc/skel/scratch")
-
-
-@hookimpl
-def tljh_post_install():
+    
     # Configure Jupyter lab extensions
     overrides_file = "/opt/tljh/user/share/jupyter/lab/settings/overrides.json"
     overrides_path = Path(overrides_file)
@@ -166,6 +166,14 @@ def tljh_post_install():
         print("     }", file=f)
         print("}", file=f)
 
-    # init conda
-    # doesn't work
-    # subprocess.call("conda init bash", shell=True)
+    # Enable panel lab extension
+    # May have to do at user level:
+    # jupyter serverextension enable panel.io.jupyter_server_extension
+    # Creates /home/jupyter-USER/.jupyter/jupyter_notebook_config.json
+    # {
+    #   "NotebookApp": {
+    #     "nbserver_extensions": {
+    #       "panel.io.jupyter_server_extension": true
+    #     }
+    #   }
+    # }
