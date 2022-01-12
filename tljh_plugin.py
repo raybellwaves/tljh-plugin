@@ -11,10 +11,10 @@ def tljh_extra_apt_packages():
     return ["nano", "vim"]
 
 
-# Doesn't work for unknown reasons
-# Use tljh_extra_user_conda_packages instead
-# def tljh_extra_hub_pip_packages():
-#     """Install jupyter lab extensions"""
+@hookimpl
+def tljh_extra_hub_pip_packages():
+    # Packages installed in /opt/tljh/hub/lib/python3.8/site-package
+    return ["cdsdashboards"]
 
 
 @hookimpl
