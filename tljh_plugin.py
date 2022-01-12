@@ -168,7 +168,7 @@ def tljh_post_install():
 
     # Enable panel lab extension
     # May have to do at user level:
-    # jupyter serverextension enable panel.io.jupyter_server_extension
+    # sudo jupyter serverextension enable panel.io.jupyter_server_extension
     # Creates /home/jupyter-USER/.jupyter/jupyter_notebook_config.json
     # {
     #   "NotebookApp": {
@@ -177,3 +177,16 @@ def tljh_post_install():
     #     }
     #   }
     # }
+
+    # Enable access to dask dashboard
+    # May have to do at user level:
+    # vi ~/.config/dask/dask.yml
+    # distributed:
+    #   dashboard:
+    #     link: /user/<JUPYTERHUB_USER>/proxy/8787/status
+    # or
+    # vi ~/.bashrc
+    # export DASK_DISTRIBUTED__DASHBOARD__LINK=/user/${JUPYTERHUB_USER}/proxy/8787/status
+    
+    # Build jupyter lab for jupyter-dash:
+    # sudo jupyter lab build
