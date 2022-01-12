@@ -104,7 +104,7 @@ def tljh_extra_user_conda_packages():
     return lab + kernel + core + viz + app
 
 
-# @hookimpl
+@hookimpl
 def tljh_custom_jupyterhub_config(c):
     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/jupyterhub_config.py
     # Setup cdsdashboards
