@@ -13,7 +13,7 @@ def tljh_extra_apt_packages():
 
 @hookimpl
 def tljh_extra_hub_pip_packages():
-    # Packages installed in /opt/tljh/hub/lib/python3.8/site-package
+    # Packages installed in /opt/tljh/hub/lib/python3.8/site-packages
     return ["cdsdashboards"]
 
 
