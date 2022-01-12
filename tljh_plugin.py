@@ -28,13 +28,13 @@ def tljh_extra_user_conda_packages():
     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
     lab = [
         "black",
-        "dask-labextension",  # installs dask
-        "elyra",
+        "dask-labextension", # installs dask
+        #"elyra", # 1/11/22 requires nbconvert >=5.6.1,<6.0
         "isort",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
         "jupyter_bokeh",
-        "jupyter-dash", # https://github.com/plotly/jupyter-dash/issues/49
+        "jupyter-dash", # 1/11/22 requires `jupyter lab build` https://github.com/plotly/jupyter-dash/issues/49
         "jupyter-containds",
         "jupyter-server-proxy",
         "jupyterlab-git",
@@ -44,7 +44,7 @@ def tljh_extra_user_conda_packages():
 
     # Python kernel extensions
     kernel = [
-        "nb_conda_kernels",  # not on pip
+        "nb_conda_kernels", # not on pip
         "ipykernel",
         "ipympl",
         "ipyleaflet",
@@ -55,7 +55,7 @@ def tljh_extra_user_conda_packages():
 
     # Data science core
     core = [
-        "geopandas",  # installs folium
+        "geopandas", # installs folium
         "fastparquet",
         "featuretools",
         "joblib",
@@ -87,7 +87,7 @@ def tljh_extra_user_conda_packages():
         "dtale",
         "geoviews",
         "graphviz",
-        "hvplot",  # installs holoviews and panel
+        "hvplot", # installs holoviews and panel
         "ipyleaflet",
         "lux-api",
         "lux-widget",
