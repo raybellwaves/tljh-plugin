@@ -185,7 +185,7 @@ def tljh_post_install():
     #   dashboard:
     #     link: /user/<JUPYTERHUB_USER>/proxy/8787/status
     # or
-    # vi ~/.bashrc
+    # vi ...
     # export DASK_DISTRIBUTED__DASHBOARD__LINK=/user/${JUPYTERHUB_USER}/proxy/8787/status
     
     # Build jupyter lab for jupyter-dash:
