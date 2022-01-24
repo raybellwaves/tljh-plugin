@@ -10,7 +10,8 @@ yaml = YAML()
 yaml.indent(offset=2)
 with open('env.yaml', 'w') as f:
     yaml.dump(d, f)
-    
+exit()
+
 # vi env.yaml and add at top
 name: test_env
 channels:
