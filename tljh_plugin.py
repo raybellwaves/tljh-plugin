@@ -207,25 +207,25 @@ def tljh_post_install():
     cdsconfig_path.parent.mkdir(exist_ok=True)
     with cdsconfig_path.open("w") as f:
         print("c.Spawner.debug = True", file=f)
-        print(" ", file=f)
+        print("", file=f)
         print(
             "c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'",
             file=f,
         )
-        print(" ", file=f)
+        print("", file=f)
         print("c.JupyterHub.allow_named_servers = True", file=f)
-        print(" ", file=f)
+        print("", file=f)
         print(
             "c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'",
             file=f,
         )
-        print(" ", file=f)
+        print("", file=f)
         print("c.CDSDashboardsConfig.builder_class = (", file=f)
         print("    'cdsdashboards.builder.processbuilder.ProcessBuilder'", file=f)
         print(")", file=f)
-        print(" ", file=f)
+        print("", file=f)
         print("c.CDSDashboardsConfig.allow_custom_conda_env = True", file=f)
-        print(" ", file=f)
+        print("", file=f)
         print(
             "c.CDSDashboardsConfig.extra_presentation_types = ['voila-source']", file=f
         )
@@ -251,13 +251,13 @@ def tljh_post_install():
         )
         print("    },", file=f)
         print("}", file=f)
-        print(" ", file=f)
-        print("from cdsdsashboards.app import CDS_TEMPLATE_PATHS", file=f)
-        print(" ", file=f)
+        print("", file=f)
+        print("from cdsdashboards.app import CDS_TEMPLATE_PATHS", file=f)
+        print("", file=f)
         print("c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS", file=f)
-        print(" ", file=f)
+        print("", file=f)
         print("from cdsdashboards.hubextension import cds_extra_handlers", file=f)
-        print(" ", file=f)
+        print("", file=f)
         print("c.JupyterHub.extra_handlers = cds_extra_handlers", file=f)
 
     # Enable panel lab extension
