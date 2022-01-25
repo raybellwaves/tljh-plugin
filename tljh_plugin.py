@@ -19,6 +19,7 @@ def tljh_extra_hub_pip_packages():
 
 @hookimpl
 def tljh_extra_user_conda_packages():
+    # Packages installed in /opt/tljh/user/bin
     # Default packages are ipykernel, ipython, ipython-genutils, ipywidgets=7.6.5
     # jupyter-resource-usage=0.6.1, jupyterhub=1.5.0, jupyterlab=3.2.5
     # jupyterlab-widgets=1.0.2, tqdm=4.62.3
@@ -104,53 +105,53 @@ def tljh_extra_user_conda_packages():
     return lab + kernel + core + viz + app
 
 
-# @hookimpl
-# def tljh_custom_jupyterhub_config(c):
-#     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/jupyterhub_config.py
-#     # Setup cdsdashboards
-#     # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
-#     c.Spawner.debug = True
+@hookimpl
+def tljh_custom_jupyterhub_config(c):
+    # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/jupyterhub_config.py
+    # Setup cdsdashboards
+    # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
+    c.Spawner.debug = True
     
-#     c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
+    c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
 
-#     c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
-
-#     c.JupyterHub.allow_named_servers = True    
+    c.JupyterHub.allow_named_servers = True
     
-#     c.CDSDashboardsConfig.builder_class = (
-#         "cdsdashboards.builder.processbuilder.ProcessBuilder"
-#     )
+    c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
     
-#     c.CDSDashboardsConfig.allow_custom_conda_env = True
+    c.CDSDashboardsConfig.builder_class = (
+        "cdsdashboards.builder.processbuilder.ProcessBuilder"
+    )
     
-#     c.CDSDashboardsConfig.extra_presentation_types = ["voila-source"]
+    c.CDSDashboardsConfig.allow_custom_conda_env = True
     
-#     c.VariableMixin.extra_presentation_launchers = {
-#         "voila-source": {
-#             "args": [
-#                 "--destport=0",
-#                 "python3",
-#                 "{-}m",
-#                 "voila",
-#                 "{presentation_path}",
-#                 "{--}strip_sources=False",
-#                 "{--}port={port}",
-#                 "{--}no-browser",
-#                 "{--}Voila.base_url={base_url}/",
-#                 "{--}Voila.server_url=/",
-#                 "--progressive",
-#             ],
-#             'extra_args_fn': "cdsdashboards.hubextension.spawners.variablemixin._get_voila_template"
-#         }
-#     }
+    c.CDSDashboardsConfig.extra_presentation_types = ["voila-source"]
+    
+    c.VariableMixin.extra_presentation_launchers = {
+        "voila-source": {
+            "args": [
+                "--destport=0",
+                "python3",
+                "{-}m",
+                "voila",
+                "{presentation_path}",
+                "{--}strip_sources=False",
+                "{--}port={port}",
+                "{--}no-browser",
+                "{--}Voila.base_url={base_url}/",
+                "{--}Voila.server_url=/",
+                "--progressive",
+            ],
+            'extra_args_fn': "cdsdashboards.hubextension.spawners.variablemixin._get_voila_template"
+        }
+    }
 
-#     from cdsdashboards.app import CDS_TEMPLATE_PATHS
+    from cdsdashboards.app import CDS_TEMPLATE_PATHS
 
-#     c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
+    c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS
 
-#     from cdsdashboards.hubextension import cds_extra_handlers
+    from cdsdashboards.hubextension import cds_extra_handlers
 
-#     c.JupyterHub.extra_handlers = cds_extra_handlers
+    c.JupyterHub.extra_handlers = cds_extra_handlers
 
 
 @hookimpl
