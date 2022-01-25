@@ -13,11 +13,11 @@ def tljh_extra_apt_packages():
 
 @hookimpl
 def tljh_extra_hub_pip_packages():
-#     # Packages installed in /opt/tljh/hub/lib/python3.8/site-packages
-#     You may want to run the statement below
-#     --user-requirements-txt-url https://raw.githubusercontent.com/raybellwaves/tljh-requirements/main/requirements.txt
-#     This will ensure packages are availible to tljh_custom_jupyterhub_config()
-      return ["cdsdashboards"]
+    #     # Packages installed in /opt/tljh/hub/lib/python3.8/site-packages
+    #     You may want to run the statement below
+    #     --user-requirements-txt-url https://raw.githubusercontent.com/raybellwaves/tljh-requirements/main/requirements.txt
+    #     This will ensure packages are availible to tljh_custom_jupyterhub_config()
+    return ["cdsdashboards"]
 
 
 @hookimpl
@@ -32,13 +32,13 @@ def tljh_extra_user_conda_packages():
     # See also https://github.com/raybellwaves/jupyter_lab_extensions/blob/main/requirements.txt
     lab = [
         "black",
-        "dask-labextension", # installs dask
-        #"elyra", # 1/11/22 requires nbconvert >=5.6.1,<6.0
+        "dask-labextension",  # installs dask
+        # "elyra", # 1/11/22 requires nbconvert >=5.6.1,<6.0
         "isort",
         "jupyterlab_code_formatter",
         "jupyterlab_execute_time",
         "jupyter_bokeh",
-        "jupyter-dash", # 1/11/22 requires `jupyter lab build` https://github.com/plotly/jupyter-dash/issues/49
+        "jupyter-dash",  # 1/11/22 requires `jupyter lab build` https://github.com/plotly/jupyter-dash/issues/49
         "jupyter-containds",
         "jupyter-server-proxy",
         "jupyterlab-git",
@@ -48,7 +48,7 @@ def tljh_extra_user_conda_packages():
 
     # Python kernel extensions
     kernel = [
-        "nb_conda_kernels", # not on pip
+        "nb_conda_kernels",  # not on pip
         "ipykernel",
         "ipympl",
         "ipyleaflet",
@@ -59,7 +59,7 @@ def tljh_extra_user_conda_packages():
 
     # Data science core
     core = [
-        "geopandas", # installs folium
+        "geopandas",  # installs folium
         "fastparquet",
         "featuretools",
         "joblib",
@@ -91,7 +91,7 @@ def tljh_extra_user_conda_packages():
         "dtale",
         "geoviews",
         "graphviz",
-        "hvplot", #1/11/22 installs holoviews and panel. requires `jupyter serverextension enable panel.io.jupyter_server_extension`
+        "hvplot",  # 1/11/22 installs holoviews and panel. requires `jupyter serverextension enable panel.io.jupyter_server_extension`
         "ipyleaflet",
         "lux-api",
         "lux-widget",
@@ -113,23 +113,23 @@ def tljh_extra_user_conda_packages():
 #     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/jupyterhub_config.py
 #     # Setup cdsdashboards
 #     # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
-    
+
 #     c.Spawner.debug = True
-    
+
 #     c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
 
 #     c.JupyterHub.allow_named_servers = True
-    
+
 #     c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'
-    
+
 #     c.CDSDashboardsConfig.builder_class = (
 #         "cdsdashboards.builder.processbuilder.ProcessBuilder"
 #     )
-    
+
 #     c.CDSDashboardsConfig.allow_custom_conda_env = True
-    
+
 #     c.CDSDashboardsConfig.extra_presentation_types = ["voila-source"]
-    
+
 #     c.VariableMixin.extra_presentation_launchers = {
 #         "voila-source": {
 #             "args": [
@@ -186,8 +186,8 @@ def tljh_post_install():
     sh.chmod("g+s", "/srv/scratch")  # sudo chmod g+s /srv/scratch
     # Link skeleton directory (directory copied to a new user's home on log in)
     sh.ln("-s", "/srv/scratch", "/etc/skel/scratch")
-    
-    # Configure Jupyter lab extensions
+
+    # Write Jupyter lab extensions configuation file
     overrides_file = "/opt/tljh/user/share/jupyter/lab/settings/overrides.json"
     overrides_path = Path(overrides_file)
     overrides_path.parent.mkdir(exist_ok=True)
@@ -200,11 +200,65 @@ def tljh_post_install():
         print('        "formatOnSave": true', file=f)
         print("     }", file=f)
         print("}", file=f)
-        
+
     # Write JupyterHub cdsdashboard configuration file
     cdsconfig_file = "/opt/tljh/config/jupyterhub_config.d/cdsdashboards_config.py"
     cdsconfig_path = Path(cdsconfig_file)
     cdsconfig_path.parent.mkdir(exist_ok=True)
+    with cdsconfig_path.open("w") as f:
+        print("c.Spawner.debug = True", file=f)
+        print(" ", file=f)
+        print(
+            "c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'",
+            file=f,
+        )
+        print(" ", file=f)
+        print("c.JupyterHub.allow_named_servers = True", file=f)
+        print(" ", file=f)
+        print(
+            "c.SystemdSpawner.unit_name_template = 'jupyter-{USERNAME}{DASHSERVERNAME}'",
+            file=f,
+        )
+        print(" ", file=f)
+        print("c.CDSDashboardsConfig.builder_class = (", file=f)
+        print("    'cdsdashboards.builder.processbuilder.ProcessBuilder'", file=f)
+        print(")", file=f)
+        print(" ", file=f)
+        print("c.CDSDashboardsConfig.allow_custom_conda_env = True", file=f)
+        print(" ", file=f)
+        print(
+            "c.CDSDashboardsConfig.extra_presentation_types = ['voila-source']", file=f
+        )
+        print(" ", file=f)
+        print("c.VariableMixin.extra_presentation_launchers = {", file=f)
+        print("    'voila-source': {", file=f)
+        print("        'args': [", file=f)
+        print("            '--destport=0',", file=f)
+        print("            'python3',", file=f)
+        print("            '{-}m',", file=f)
+        print("            'voila',", file=f)
+        print("            '{presentation_path}',", file=f)
+        print("            '{--}strip_sources=False',", file=f)
+        print("            '{--}port={port}',", file=f)
+        print("            '{--}no-browser',", file=f)
+        print("            '{--}Voila.base_url={base_url}/',", file=f)
+        print("            '{--}Voila.server_url=/',", file=f)
+        print("            '--progressive',", file=f)
+        print("        ],", file=f)
+        print(
+            "        'extra_args_fn': 'cdsdashboards.hubextension.spawners.variablemixin._get_voila_template',",
+            file=f,
+        )
+        print("    },", file=f)
+        print("}", file=f)
+        print(" ", file=f)
+        print("from cdsdsashboards.app import CDS_TEMPLATE_PATHS", file=f)
+        print(" ", file=f)
+        print("c.JupyterHub.template_paths = CDS_TEMPLATE_PATHS", file=f)
+        print(" ", file=f)
+        print("from cdsdashboards.hubextension import cds_extra_handlers", file=f)
+        print(" ", file=f)
+        print("c.JupyterHub.extra_handlers = cds_extra_handlers", file=f)
 
     # Enable panel lab extension
     # May have to do at user level:
@@ -227,6 +281,6 @@ def tljh_post_install():
     # or
     # vi ...
     # export DASK_DISTRIBUTED__DASHBOARD__LINK=/user/${JUPYTERHUB_USER}/proxy/8787/status
-    
+
     # Build jupyter lab for jupyter-dash:
     # sudo jupyter lab build
