@@ -11,10 +11,13 @@ def tljh_extra_apt_packages():
     return ["nano", "vim"]
 
 
-@hookimpl
-def tljh_extra_hub_pip_packages():
-    # Packages installed in /opt/tljh/hub/lib/python3.8/site-packages
-    return ["cdsdashboards"]
+# @hookimpl
+# def tljh_extra_hub_pip_packages():
+#     # Packages installed in /opt/tljh/hub/lib/python3.8/site-packages
+#     You probably want to run the statement below
+#     --user-requirements-txt-url https://raw.githubusercontent.com/raybellwaves/tljh-requirements/main/requirements.txt
+#     This will ensure packages are availible to tljh_custom_jupyterhub_config()
+#     return ["cdsdashboards"]
 
 
 @hookimpl
