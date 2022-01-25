@@ -203,6 +203,8 @@ def tljh_post_install():
         
     # Write JupyterHub cdsdashboard configuration file
     cdsconfig_file = "/opt/tljh/config/jupyterhub_config.d/cdsdashboards_config.py"
+    cdsconfig_path = Path(cdsconfig_file)
+    cdsconfig_path.parent.mkdir(exist_ok=True)
 
     # Enable panel lab extension
     # May have to do at user level:
