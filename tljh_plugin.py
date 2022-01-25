@@ -1,6 +1,7 @@
 # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/hooks.py
 from pathlib import Path
 import sh
+from tljh.conda import ensure_pip_packages
 from tljh.hooks import hookimpl
 from tljh.user import ensure_group
 
@@ -113,6 +114,11 @@ def tljh_custom_jupyterhub_config(c):
     # See https://github.com/jupyterhub/the-littlest-jupyterhub/blob/main/tljh/jupyterhub_config.py
     # Setup cdsdashboards
     # See https://cdsdashboards.readthedocs.io/en/stable/chapters/setup/tljh.html#
+    try:
+        import cdsdashboards
+    execpt ModuleNotFoundError:
+        ensure_pip_packages("/opt/tljh/hub", ["cdsdashboards"])
+    
     c.Spawner.debug = True
     
     c.JupyterHub.spawner_class = 'cdsdashboards.hubextension.spawners.variableusercreating.VariableUserCreatingSpawner'
