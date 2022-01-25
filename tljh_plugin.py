@@ -229,7 +229,7 @@ def tljh_post_install():
         print(
             "c.CDSDashboardsConfig.extra_presentation_types = ['voila-source']", file=f
         )
-        print(" ", file=f)
+        print("", file=f)
         print("c.VariableMixin.extra_presentation_launchers = {", file=f)
         print("    'voila-source': {", file=f)
         print("        'args': [", file=f)
