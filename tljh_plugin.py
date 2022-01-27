@@ -239,10 +239,10 @@ def tljh_post_install():
     # vi ~/.config/dask/dask.yml
     # distributed:
     #   dashboard:
-    #     link: /user/<JUPYTERHUB_USER>/proxy/8787/status
+    #     link: "{JUPYTERHUB_BASE_URL}user/{JUPYTERHUB_USER}/proxy/{port}/status"
     # or
     # vi ...
-    # export DASK_DISTRIBUTED__DASHBOARD__LINK=/user/${JUPYTERHUB_USER}/proxy/8787/status
+    # export DASK_DISTRIBUTED__DASHBOARD__LINK=${JUPYTERHUB_BASE_URL}user/${JUPYTERHUB_USER}/proxy/8787/status
 
     # Build jupyter lab for jupyter-dash:
     # sudo jupyter lab build
