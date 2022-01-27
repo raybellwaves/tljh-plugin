@@ -217,7 +217,7 @@ def tljh_post_install():
 
     # Enable panel lab extension
     # May have to do at user level:
-    # sudo jupyter serverextension enable panel.io.jupyter_server_extension
+    # jupyter serverextension enable panel.io.jupyter_server_extension
     # Creates /home/jupyter-USER/.jupyter/jupyter_notebook_config.json
     # {
     #   "NotebookApp": {
