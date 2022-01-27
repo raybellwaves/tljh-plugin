@@ -215,10 +215,17 @@ def tljh_post_install():
         print("", file=f)
         print("c.JupyterHub.extra_handlers = cds_extra_handlers", file=f)
 
+    # Allow colloboration with jupyter lab
+    jlabconfig_file = "/opt/tljh/config/jupyterhub_config.d/jupyter_lab_config.py"
+    jlabconfig_path = Path(jlabconfig_file)
+    jlabconfig_path.parent.mkdir(exist_ok=True)
+    with jlabconfig_path.open("w") as f:
+        print("c.LabApp.collaborative = True", file=f)
+        
     # Enable panel lab extension
     # May have to do at user level:
-    # jupyter serverextension enable panel.io.jupyter_server_extension
-    # Creates /home/jupyter-USER/.jupyter/jupyter_notebook_config.json
+    # (sudo) jupyter serverextension enable panel.io.jupyter_server_extension
+    # If no sudo: creates /home/jupyter-USER/.jupyter/jupyter_notebook_config.json
     # {
     #   "NotebookApp": {
     #     "nbserver_extensions": {
