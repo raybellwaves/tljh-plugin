@@ -215,12 +215,18 @@ def tljh_post_install():
         print("", file=f)
         print("c.JupyterHub.extra_handlers = cds_extra_handlers", file=f)
 
-    # Allow colloboration with jupyter lab
+    # Allow colloboration
+    jhubconfig_file = "/opt/tljh/config/jupyterhub_config.d/jupyter_hub_config.py"
+    jhubconfig_path = Path(jhubconfig_file)
+    jhubconfig_path.parent.mkdir(exist_ok=True)
+    with jhubconfig_path.open("w") as f:
+        print("c.JupyterHub.admin_access = True", file=f)    
     jlabconfig_file = "/opt/tljh/config/jupyterhub_config.d/jupyter_lab_config.py"
     jlabconfig_path = Path(jlabconfig_file)
     jlabconfig_path.parent.mkdir(exist_ok=True)
     with jlabconfig_path.open("w") as f:
         print("c.LabApp.collaborative = True", file=f)
+        
         
     # Enable panel lab extension
     # May have to do at user level:
