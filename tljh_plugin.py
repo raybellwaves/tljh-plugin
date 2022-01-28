@@ -216,6 +216,7 @@ def tljh_post_install():
         print("c.JupyterHub.extra_handlers = cds_extra_handlers", file=f)
 
     # Allow colloboration
+    # These may not work with RTC as tljh is < 2
     jhubconfig_file = "/opt/tljh/config/jupyterhub_config.d/jupyter_hub_config.py"
     jhubconfig_path = Path(jhubconfig_file)
     jhubconfig_path.parent.mkdir(exist_ok=True)
